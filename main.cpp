@@ -1,6 +1,6 @@
 /**
 * Author: Parnell Thrower
-* Description: Manage Tasks using Map, HashTable, and Try-Catch
+* Description: GradeBook mimic Program
 * Due Date: 4/20/2024
 */
 

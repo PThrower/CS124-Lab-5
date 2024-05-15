@@ -1,4 +1,8 @@
+/*
+This takes in data from grade-scale.csv for further processing.
+*/
 #include "gradeScale.h"
+#include "binarySearchTree.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>

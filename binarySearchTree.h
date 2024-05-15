@@ -1,3 +1,7 @@
+/*
+Here is my Binary Search Tree, this is the class template. It takes 
+in the data from the assignment-data.csv for further processing.
+*/
 #ifndef BINARY_SEARCH_TREE_H
 #define BINARY_SEARCH_TREE_H
 
