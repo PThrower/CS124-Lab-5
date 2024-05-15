@@ -2,6 +2,10 @@
 #define BINARY_SEARCH_TREE_H
 
 #include <string>
+#include <fstream>
+#include <sstream>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -78,6 +82,18 @@ Node<T>::~Node() {
 template <typename T>
 class BinarySearchTree {
 public:
+    
+    struct Assignment {
+    int id;
+    int groupId;
+    string description;
+    string startDate;
+    string endDate;
+    int possiblePoints;
+    int pointsEarned;
+};
+    void populateTree();
+
     /**
        Constructs an empty tree.
     */
@@ -290,6 +306,42 @@ BinarySearchTree<T>& BinarySearchTree<T>::operator= (const BinarySearchTree<T>& 
     } else {
         root = new Node<T>(*(bst.root));
     }
+}
+
+template <typename T>
+void BinarySearchTree<T>::populateTree() {
+    ifstream file("assignment-data.csv");
+    if (!file.is_open()) {
+        cerr << "Error opening file." << endl;
+        return;
+    }
+
+    string line;
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string temp;
+        vector<string> tokens;
+        while (getline(ss, temp, ',')) {
+            tokens.push_back(temp);
+        }
+        if (tokens.size() != 7) {
+            cerr << "Error: Invalid data format." << endl;
+            continue;
+        }
+
+        Assignment assignment;
+        assignment.id = stoi(tokens[0]);
+        assignment.groupId = stoi(tokens[1]);
+        assignment.description = tokens[2];
+        assignment.startDate = tokens[3];
+        assignment.endDate = tokens[4];
+        assignment.possiblePoints = stoi(tokens[5]);
+        assignment.pointsEarned = stoi(tokens[6]);
+
+        //insert(assignment);
+    }
+
+    file.close();
 }
 
 #endif

@@ -15,20 +15,22 @@ public:
     void setStartDate(DateTime start);
     void setEndDate(DateTime end);
     void setPossiblePoints(int possiblePoints);
-    string setPoints(int points);
-
+    void setPoints(int points);
+    
     int getID() const;
     int getGroupID() const;
     string getDescription() const;
     DateTime getStartDate() const;
     DateTime getendDate() const;
     int getPossiblePoints() const;
-    string getPoints() const;
+    int getPoints() const;
+
+    void readAssignment();
     
 private:
     DateTime start;
     DateTime end;
 
-    int id, groupID;
-    string description, possiblePoints, points;
+    int id, groupID, possiblePoints, points;
+    string description;
 };

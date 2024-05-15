@@ -8,12 +8,16 @@
 #include <iomanip>
 //#include "gradeMenu.h"
 #include "gradeMenu.h"
+#include "binarySearchTree.h"
+#include "assignment.h"
 
 using namespace std;
 
 void showBanner();
 
 int main() {
+	BinarySearchTree<AssignmentData> bst;
+    bst.populateTree();
 	showBanner();
 	GradeMenu menu;
 	menu.activate();

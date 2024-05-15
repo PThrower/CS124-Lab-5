@@ -24,22 +24,22 @@ void GradeScale::setDescription(string description) {
     this->description = description;
 }
 
-void GradeScale::setWeight(string description, double weight) {
+void GradeScale::setWeight(string description, int weight) {
     this->weight = weight;
     if (description == "Assignments") {
-        this->weight = weight * .10;
+        this->weight = (weight * 10) / 100;
     }
     else if(description ==  "Quizzes") {
-        this->weight = weight * .10;
+        this->weight = (weight * 10) / 100;
     }
     else if(description == "Labs") {
-        this->weight = weight * .30;
+        this->weight = (weight * 30) / 100;
     }
     else if(description == "Midterm") {
-        this->weight = weight * .20;
+        this->weight = (weight * 20) / 100;
     }
     else if(description == "Final Exam") {
-        this->weight = weight * .30;
+        this->weight = (weight * 30) / 100;
     }
 }
 
