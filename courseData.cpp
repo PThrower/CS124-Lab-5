@@ -1,3 +1,6 @@
+/*
+This takes in data from course-data.csv for further processing.
+*/
 #include "courseData.h"
 #include <iostream>
 #include <fstream>

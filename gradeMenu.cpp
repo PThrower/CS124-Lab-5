@@ -1,6 +1,9 @@
 /**
 * Author: Parnell Thrower
-* Description: Manage Tasks using Map, HashTable, and Try-Catch
+* Description: Here I tried to make an object of BinarySearchTree to
+use in the functions below. After throughough trial and error I 
+wasn't able to come to the correct conclusion, and nobody was able to help me
+get there. All GradeMenu functions have been edited here.
 * Due Date: 4/20/2024
 */
 

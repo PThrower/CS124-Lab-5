@@ -33,9 +33,21 @@ void DateTime::setDateTime(string dateTime) {
 	else {
 		stime = dateTime;
 	}
-	hr = stoi(stime.substr(0, 2));
-	min = stoi(stime.substr(3, 2));
-	sec = stoi(stime.substr(6, 2));
+	try {
+		hr = stoi(stime.substr(0, 2));
+	} catch (const invalid_argument& e) {
+            cerr << "Error: Invalid argument - " << e.what() << endl;
+        }
+	try {
+		min = stoi(stime.substr(3, 2));
+	} catch (const invalid_argument& e) {
+            cerr << "Error: Invalid argument - " << e.what() << endl;
+        }
+	try {
+		sec = stoi(stime.substr(6, 2));
+	} catch (const invalid_argument& e) {
+            cerr << "Error: Invalid argument - " << e.what() << endl;
+        }
 }
 
 // Return MM/DD/YYYY HH:MM:SS

@@ -18,10 +18,11 @@ enum COMMAND {LIST='1', VIEW='2', ADD='3', EDIT = '4', REMOVE = '5', CALCULATE =
 template <typename T>
 class GradeMenu :public Menu {
 public:
-    GradeMenu(BinarySearchTree<T>* root);
+    GradeMenu();
+    GradeMenu(const BinarySearchTree<T>& root);
     ~GradeMenu();
 
-    void doList();
+    doList(const BinarySearchTree<T>& root);
     void doView();
     void doAdd();
     void doEdit();
@@ -37,5 +38,4 @@ protected:
 
 private:
     fstream inFile;
-    BinarySearchTree<T>* root;
 };

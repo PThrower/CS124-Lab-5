@@ -32,14 +32,26 @@ void DateType::setDate(string dateString) {
 	}
 	FORMAT_SEPARATOR = string(1, sdate.at(pos));
 	pos = static_cast<int>(sdate.find(FORMAT_SEPARATOR));
-	month = stoi(sdate.substr(0, pos));
+	try {
+		month = stoi(sdate.substr(0, pos));
+	} catch (const invalid_argument& e) {
+            cerr << "Error: Invalid argument - " << e.what() << endl;
+        }
 	sdate = sdate.substr(pos + 1); //skip past the first delimiter
 
 	pos = (int)sdate.find(FORMAT_SEPARATOR);
-	day = stoi(sdate.substr(0, pos));
+	try {
+		day = stoi(sdate.substr(0, pos));
+	} catch (const invalid_argument& e) {
+            cerr << "Error: Invalid argument - " << e.what() << endl;
+        }
 	sdate = sdate.substr(pos + 1);
 
-	year = stoi(sdate); //year is all remaining in the string
+	try {
+		year = stoi(sdate); //year is all remaining in the string
+	} catch (const invalid_argument& e) {
+            cerr << "Error: Invalid argument - " << e.what() << endl;
+        }
 
 }
 
