@@ -20,6 +20,8 @@ public:
     void setEmail(string email);
     void setPhone(string phone);
 
+    void activate();
+
     string getFacultyID() const;
     string getFirstName() const;
     string getLastName() const;

@@ -15,6 +15,8 @@ public:
     void setUnits(int units);
     void setFacultyID(string facultyID);
 
+    void activate();
+
     string getTerm() const;
     string getSection() const;
     string getCourseName() const;

@@ -335,14 +335,25 @@ void BinarySearchTree<T>::populateTree() {
         } catch (const invalid_argument& e) {
             cerr << "Error: Invalid argument - " << e.what() << endl;
         }
-        //assignment.groupId = stoi(tokens[1]);
+        try {
+            assignment.groupId = stoi(tokens[1]);
+        } catch (const invalid_argument& e) {
+            cerr << "Error: Invalid argument - " << e.what() << endl;
+        }
         assignment.description = tokens[2];
         assignment.startDate = tokens[3];
         assignment.endDate = tokens[4];
-        //assignment.possiblePoints = stoi(tokens[5]);
-        //assignment.pointsEarned = stoi(tokens[6]);
-
-        //insert(assignment);
+        try {
+            assignment.possiblePoints = stoi(tokens[5]);
+        } catch (const invalid_argument& e) {
+            cerr << "Error: Invalid argument - " << e.what() << endl;
+        }
+        try {
+            assignment.pointsEarned = stoi(tokens[6]);
+        } catch (const invalid_argument& e) {
+            cerr << "Error: Invalid argument - " << e.what() << endl;
+        }
+        insert(assignment);
     }
 
     file.close();

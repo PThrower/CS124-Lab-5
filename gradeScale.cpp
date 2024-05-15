@@ -1,5 +1,8 @@
 #include "gradeScale.h"
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <vector>
 
 using namespace std;
 
@@ -57,4 +60,52 @@ string GradeScale::getDescription() const {
 
 int GradeScale::getWeight() const {
     return this->weight;
+}
+
+
+void GradeScale::activate() {
+    ifstream file("grade-scale.csv");
+    if (!file.is_open()) {
+        cout << "Error: Unable to open file." << endl;
+        return;
+    }
+
+    string line;
+    // Skip the header line
+    getline(file, line);
+
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string section, description, idNumber, weightLBS;
+        getline(ss, section, ',');
+        getline(ss, description, ',');
+        getline(ss, idNumber, ',');
+        getline(ss, weightLBS, ',');
+
+        // Convert units from string to int
+        try {
+            int id = stoi(idNumber);
+        } catch (const invalid_argument& e) {
+            cerr << "Error: Invalid argument - " << e.what() << endl;
+        }
+
+        try {
+            int weight = stoi(weightLBS);
+        } catch (const invalid_argument& e) {
+            cerr << "Error: Invalid argument - " << e.what() << endl;
+        }
+
+        // Create a new CourseData object and populate it
+        GradeScale scale;
+        scale.setGroupID(id);
+        scale.setSection(section);
+        scale.setDescription(description);
+        scale.setWeight(description, weight);
+
+
+        // Activate to display the populated data
+        scale.activate();
+    }
+
+    file.close();
 }

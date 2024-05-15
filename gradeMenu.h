@@ -15,9 +15,10 @@ using namespace std;
 //const string TASK_DATA = "task_data.csv";
 enum COMMAND {LIST='1', VIEW='2', ADD='3', EDIT = '4', REMOVE = '5', CALCULATE = '6', SAVE = '7', EXIT = 'x' };
 
+template <typename T>
 class GradeMenu :public Menu {
 public:
-    GradeMenu();
+    GradeMenu(BinarySearchTree<T>* root);
     ~GradeMenu();
 
     void doList();
@@ -36,4 +37,5 @@ protected:
 
 private:
     fstream inFile;
+    BinarySearchTree<T>* root;
 };

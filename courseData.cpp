@@ -1,5 +1,8 @@
 #include "courseData.h"
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <vector>
 
 using namespace std;
 
@@ -50,4 +53,46 @@ int CourseData::getUnits() const {
 
 string CourseData::getFacultyID() const {
     return this->facultyID;
+}
+
+void CourseData::activate() {
+    ifstream file("course-data.csv");
+    if (!file.is_open()) {
+        cout << "Error: Unable to open file." << endl;
+        return;
+    }
+
+    string line;
+    // Skip the header line
+    getline(file, line);
+
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string term, section, courseName, facultyID, unitsStr;
+        getline(ss, term, ',');
+        getline(ss, section, ',');
+        getline(ss, courseName, ',');
+        getline(ss, unitsStr, ',');
+        getline(ss, facultyID, ',');
+
+        // Convert units from string to int
+        try {
+            int units = stoi(unitsStr);
+        } catch (const invalid_argument& e) {
+            cerr << "Error: Invalid argument - " << e.what() << endl;
+        }
+
+        // Create a new CourseData object and populate it
+        CourseData course;
+        course.setTerm(term);
+        course.setSection(section);
+        course.setCourseName(courseName);
+        course.setUnits(units);
+        course.setFacultyID(facultyID);
+
+        // Activate to display the populated data
+        course.activate();
+    }
+
+    file.close();
 }

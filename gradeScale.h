@@ -14,6 +14,8 @@ public:
     void setDescription(string description);
     void setWeight(string description, int weight);
 
+    void activate();
+
     int getGroupID() const;
     string getSection() const;
     string getDescription() const;
